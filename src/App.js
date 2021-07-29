@@ -1,7 +1,7 @@
 import MainContainer from "./containers/Main/Main";
-import { Button, Layout, Row, Col } from "antd";
+import { Button, Layout, Row, Col, Divider } from "antd";
 import HeaderComponent from "./components/Header/header";
-
+import "antd/dist/antd.css";
 function App() {
   const { Footer, Content } = Layout;
 
@@ -10,7 +10,8 @@ function App() {
       <HeaderComponent />
       <Content>
         <>
-          <Row className="fields-row">
+          <Divider />
+          <Row className="fields-row" gutter={24}>
             <Col span={4} xs={24} sm={4} lg={4}></Col>
             <Col span={20} xs={24} sm={20} lg={20}>
               <Row align="middle" justify="end">
@@ -36,6 +37,8 @@ function App() {
               </Row>
             </Col>
           </Row>
+          <Divider />
+
           <MainContainer />
         </>
       </Content>

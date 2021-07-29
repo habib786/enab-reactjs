@@ -9,17 +9,7 @@ class HeaderComponent extends React.Component {
     return (
       <Header className="app-header">
         <Row type="flex" gutter={0}>
-          <Col
-            span={20}
-            xs={12}
-            sm={20}
-            md={20}
-            lg={20}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
+          <Col span={20} xs={12} sm={20} md={20} lg={20}>
             <div>
               <h3>Header</h3>
             </div>
