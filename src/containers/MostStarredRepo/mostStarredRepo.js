@@ -1,9 +1,9 @@
 import { Spin } from "antd";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { getAllStaredRepos } from "../../actions/getAllStarredRepos";
 import CardListView from "../../components/CardListView/CardListView";
 import Loader from "../../components/Loader/Loader";
+import { getAllStarredRepos } from "../../service";
 import "./mostStarredRepo.scss";
 
 const MostStarredRepo = () => {
@@ -11,28 +11,18 @@ const MostStarredRepo = () => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
 
-  const getAllData = async (page) => {
-    const url =
-      "https://api.github.com/search/repositories?q=created:>" +
-      getDate() +
-      `&sort=stars&order=desc&page=${page}`;
-    const res = await getAllStaredRepos(url);
-
-    res.length > 0 ? setPage(page + 1) : setPage(page);
-    const data = [...repos, ...res];
-    setRepos(data);
-    setLoading(false);
-  };
-
   useEffect(() => {
     setLoading(true);
     getAllData(page);
   }, []);
 
-  const getDate = () => {
-    var date = new Date();
-    date.setDate(date.getDate() - 30);
-    return date.toISOString().split("T")[0];
+  const getAllData = async (page) => {
+    const res = await getAllStarredRepos(page);
+
+    res.length > 0 ? setPage(page + 1) : setPage(page);
+    const data = [...repos, ...res];
+    setRepos(data);
+    setLoading(false);
   };
 
   return (
