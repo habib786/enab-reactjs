@@ -1,6 +1,6 @@
 import { Col, Layout, Row } from "antd";
 import React from "react";
-import "./header.css";
+import "./header.scss";
 
 const { Header } = Layout;
 

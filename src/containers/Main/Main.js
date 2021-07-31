@@ -7,7 +7,6 @@ const MainContainer = () => {
       <Router>
         <Route exact path="/" component={MostStarredRepo} />
       </Router>
-      {/* <MostStarredRepo /> */}
     </>
   );
 };

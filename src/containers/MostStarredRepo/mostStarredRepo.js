@@ -2,20 +2,30 @@ import { useEffect, useState } from "react";
 import "./mostStarredRepo.scss";
 import { getAllStaredRepos } from "../../actions/getAllStarredRepos";
 import moment from "moment";
+import { Spin, message } from "antd";
 
 const MostStarredRepo = () => {
   const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getAllData = async (url) => {
+    setLoading(true);
     const res = await getAllStaredRepos(url);
-    setRepos(res);
+    if (typeof res === "string") {
+      message.error("Something Went Wrong");
+      setLoading(false);
+    } else {
+      setRepos(res);
+      setLoading(false);
+    }
   };
+
   useEffect(() => {
-    const default_url =
+    const url =
       "https://api.github.com/search/repositories?q=created:>" +
       getDate() +
-      "&sort=stars&order=desc";
-    getAllData(default_url);
+      "&sort=stars&order=desc&page=1&size=10";
+    getAllData(url);
   }, []);
 
   const getDate = () => {
@@ -56,12 +66,20 @@ const MostStarredRepo = () => {
     );
   };
   return (
-    <div className="list">
-      {repos &&
-        repos.map((item) => {
-          return renderRows(item);
-        })}
-    </div>
+    <>
+      {loading ? (
+        <div className="loader">
+          <Spin size="large" />
+        </div>
+      ) : (
+        <div className="list">
+          {repos &&
+            repos.map((item) => {
+              return renderRows(item);
+            })}
+        </div>
+      )}
+    </>
   );
 };
 export default MostStarredRepo;

@@ -2,8 +2,9 @@ import MainContainer from "./containers/Main/Main";
 import { Button, Layout, Row, Col, Divider } from "antd";
 import HeaderComponent from "./components/Header/header";
 import "antd/dist/antd.css";
+import CustomFooter from "./components/Footer/Footer";
 function App() {
-  const { Footer, Content } = Layout;
+  const { Content } = Layout;
 
   return (
     <Layout>
@@ -42,15 +43,7 @@ function App() {
           <MainContainer />
         </>
       </Content>
-      <Footer
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          backgroundColor: "lightgrey",
-        }}
-      >
-        Enab Code Challenge@All Right Reserverd
-      </Footer>
+      <CustomFooter />
     </Layout>
   );
 }
