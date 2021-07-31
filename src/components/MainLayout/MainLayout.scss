@@ -1,0 +1,13 @@
+.main-layout {
+  min-height: 100vh;
+
+  .layout-content-no-margin {
+    margin-top: 0px;
+  }
+
+  .main-layout__content-wrap {
+    padding: 30px;
+    min-height: 80vh;
+    overflow: initial;
+  }
+}
