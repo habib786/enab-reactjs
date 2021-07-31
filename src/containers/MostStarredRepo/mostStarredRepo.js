@@ -16,15 +16,11 @@ const MostStarredRepo = () => {
       getDate() +
       `&sort=stars&order=desc&page=${page}`;
     const res = await getAllStaredRepos(url);
-    if (typeof res === "string") {
-      message.error("Something Went Wrong");
-      setLoading(false);
-    } else {
-      setPage(page + 1);
-      const data = [...repos, ...res];
-      setRepos(data);
-      setLoading(false);
-    }
+
+    res.length > 0 ? setPage(page + 1) : setPage(page);
+    const data = [...repos, ...res];
+    setRepos(data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -79,7 +75,7 @@ const MostStarredRepo = () => {
         <InfiniteScroll
           dataLength={repos.length}
           next={() => getAllData(page)}
-          hasMore={true}
+          hasMore={page !== 34 && page < 34}
           loader={
             <div className="loader">
               <Spin size="default" />
@@ -87,7 +83,7 @@ const MostStarredRepo = () => {
           }
           endMessage={
             <p style={{ textAlign: "center" }}>
-              <b>--- END ---</b>
+              <b>---All Record Shown---</b>
             </p>
           }
         >
