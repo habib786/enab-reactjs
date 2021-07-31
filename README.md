@@ -23,7 +23,7 @@ npm install
 ```
 
 ## Run
-To run the project in localhost host please follow the following steps. 
+To run the project in localhost please follow the following steps. 
 ```
 npm start
 ```
