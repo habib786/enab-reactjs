@@ -1,8 +1,9 @@
-import MainContainer from "./containers/Main/Main";
-import { Button, Layout, Row, Col, Divider } from "antd";
-import HeaderComponent from "./components/Header/header";
+import { Layout } from "antd";
 import "antd/dist/antd.css";
+import { BrowserRouter as Router } from "react-router-dom";
 import CustomFooter from "./components/Footer/Footer";
+import HeaderComponent from "./components/Header/header";
+import MainContainer from "./containers/Main/Main";
 function App() {
   const { Content } = Layout;
 
@@ -10,38 +11,9 @@ function App() {
     <Layout>
       <HeaderComponent />
       <Content>
-        <>
-          <Divider />
-          <Row className="fields-row" gutter={24}>
-            <Col span={4} xs={24} sm={4} lg={4}></Col>
-            <Col span={20} xs={24} sm={20} lg={20}>
-              <Row align="middle" justify="end">
-                <Col span={6} xs={24} sm={6} lg={6} className="text-right">
-                  <Button
-                    size="large"
-                    style={{ color: "white", backgroundColor: "#1890ff" }}
-                    onClick={() => {}}
-                  >
-                    Action 1
-                  </Button>
-                </Col>
-
-                <Col span={6} xs={24} sm={6} lg={6} className="text-right">
-                  <Button
-                    style={{ color: "white", backgroundColor: "#1890ff" }}
-                    size="large"
-                    onClick={() => {}}
-                  >
-                    Action 2
-                  </Button>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-          <Divider />
-
+        <Router>
           <MainContainer />
-        </>
+        </Router>
       </Content>
       <CustomFooter />
     </Layout>
