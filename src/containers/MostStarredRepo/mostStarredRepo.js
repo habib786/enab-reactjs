@@ -1,8 +1,8 @@
-import { message, Spin } from "antd";
-import moment from "moment";
+import { Spin } from "antd";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getAllStaredRepos } from "../../actions/getAllStarredRepos";
+import CardListView from "../../components/CardListView/CardListView";
 import "./mostStarredRepo.scss";
 
 const MostStarredRepo = () => {
@@ -34,37 +34,6 @@ const MostStarredRepo = () => {
     return date.toISOString().split("T")[0];
   };
 
-  const renderRows = (props) => {
-    return (
-      <div className="row">
-        <div className="avatar-container">
-          <img
-            className="repo-avatar"
-            alt="Repository Avatar"
-            src={props.owner.avatar_url}
-          />
-        </div>
-        <div className="content-container">
-          <h2 className="title" children={props.name} />
-
-          <p className="text" children={props.description} />
-
-          <div className="bottom-info">
-            <div className="info-badge stars">
-              Stars: {props.stargazers_count}
-            </div>
-            <div className="info-badge issues">
-              Issues: {props.open_issues_count}
-            </div>
-            <div className="submit-info">
-              Submitted {moment(props.created_at, "YYYYMMDD").fromNow()}
-              by {props.owner.login}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
   return (
     <>
       {loading ? (
@@ -85,12 +54,11 @@ const MostStarredRepo = () => {
             <p style={{ textAlign: "center" }}>
               <b>---All Record Shown---</b>
             </p>
-          }
-        >
+          }>
           <div className="list">
             {repos &&
               repos.map((item) => {
-                return renderRows(item);
+                return <CardListView {...item} />;
               })}
           </div>
         </InfiniteScroll>
