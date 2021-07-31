@@ -17,6 +17,8 @@ git clone https://github.com/habib786/enab-reactjs.git
 ## Installation
 To install all the required packages run the following command in cmd.
 ```
+cd enab-reactjs
+
 npm install
 ```
 
