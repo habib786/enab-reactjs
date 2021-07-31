@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getAllStaredRepos } from "../../actions/getAllStarredRepos";
 import CardListView from "../../components/CardListView/CardListView";
+import Loader from "../../components/Loader/Loader";
 import "./mostStarredRepo.scss";
 
 const MostStarredRepo = () => {
@@ -37,9 +38,7 @@ const MostStarredRepo = () => {
   return (
     <>
       {loading ? (
-        <div className="loader">
-          <Spin size="large" />
-        </div>
+        <Loader />
       ) : (
         <InfiniteScroll
           dataLength={repos.length}
@@ -57,8 +56,8 @@ const MostStarredRepo = () => {
           }>
           <div className="list">
             {repos &&
-              repos.map((item) => {
-                return <CardListView {...item} />;
+              repos.map((item, key) => {
+                return <CardListView key={key} {...item} />;
               })}
           </div>
         </InfiniteScroll>
