@@ -1,5 +1,6 @@
 import { Button, Col, Divider, Row } from "antd";
 import { Route, useHistory } from "react-router-dom";
+import LanguagesRepo from "../LanguagesRepo/LanguagesRepo";
 import MostStarredRepo from "../MostStarredRepo/mostStarredRepo";
 
 const MainContainer = () => {
@@ -15,8 +16,7 @@ const MainContainer = () => {
               <Button
                 size="large"
                 style={{ color: "white", backgroundColor: "#1890ff" }}
-                onClick={() => history.push("/")}
-              >
+                onClick={() => history.push("/")}>
                 Most Starred Repo
               </Button>
             </Col>
@@ -25,9 +25,8 @@ const MainContainer = () => {
               <Button
                 style={{ color: "white", backgroundColor: "#1890ff" }}
                 size="large"
-                onClick={() => history.push("/test")}
-              >
-                Action 2
+                onClick={() => history.push("/recent")}>
+                Recent Repo
               </Button>
             </Col>
           </Row>
@@ -35,7 +34,7 @@ const MainContainer = () => {
       </Row>
       <Divider />
       <Route exact path="/" component={MostStarredRepo} />
-      <Route exact path="/test" component={MostStarredRepo} />
+      <Route exact path="/recent" component={LanguagesRepo} />
     </>
   );
 };
