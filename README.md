@@ -4,7 +4,6 @@ This project have two pages, first page will show the top languages and second p
 
 ## Technology Stack
 * ReactJS
-* Redux
 * Axios
 * MomentJS
 
