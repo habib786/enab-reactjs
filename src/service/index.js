@@ -2,7 +2,7 @@ import { message } from "antd";
 import axios from "axios";
 import groupBy from "lodash/groupBy";
 import forEach from "lodash/forEach";
-import { getDateOfLastMonth, getLanguageRepos } from "../utils";
+import { assignRank, getDateOfLastMonth, getLanguageRepos } from "../utils";
 
 export const getAllStarredRepos = async (page) => {
   const url =
@@ -30,10 +30,11 @@ export const getRecentRepos = async () => {
         obj.repositories = getLanguageRepos(l);
         obj.name = l[0].language;
         obj.repoCount = l.length;
+        obj.rank = 0;
         res.push(obj);
       }
     });
-
+    assignRank([...res]);
     return res;
   } else {
     message.error("Something Went Wrong");
