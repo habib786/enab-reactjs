@@ -11,30 +11,29 @@ const MainContainer = () => {
       <Row className="fields-row" gutter={24}>
         <Col span={4} xs={24} sm={4} lg={4}></Col>
         <Col span={20} xs={24} sm={20} lg={20}>
-          <Row align="middle" justify="end">
+          <Row align="middle" justify="center">
             <Col span={6} xs={24} sm={6} lg={6} className="text-right">
               <Button
-                size="large"
                 style={{ color: "white", backgroundColor: "#1890ff" }}
+                size="large"
                 onClick={() => history.push("/")}>
-                Most Starred Repo
+                Recent Repo
               </Button>
             </Col>
-
             <Col span={6} xs={24} sm={6} lg={6} className="text-right">
               <Button
-                style={{ color: "white", backgroundColor: "#1890ff" }}
                 size="large"
-                onClick={() => history.push("/recent")}>
-                Recent Repo
+                style={{ color: "white", backgroundColor: "#1890ff" }}
+                onClick={() => history.push("/starred")}>
+                Most Starred Repo
               </Button>
             </Col>
           </Row>
         </Col>
       </Row>
       <Divider />
-      <Route exact path="/" component={MostStarredRepo} />
-      <Route exact path="/recent" component={LanguagesRepo} />
+      <Route exact path="/" component={LanguagesRepo} />
+      <Route exact path="/starred" component={MostStarredRepo} />
     </>
   );
 };
